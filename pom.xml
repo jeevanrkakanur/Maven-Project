@@ -5,36 +5,21 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.example.maven-project</groupId>
-    <artifactId>maven-project</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <packaging>pom</packaging>
+    <parent>
+        <groupId>com.example.maven-project</groupId>
+        <artifactId>maven-project</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
 
-    <modules>
-        <module>server</module>
-        <module>webapp</module>
-    </modules>
+    <artifactId>webapp</artifactId>
+    <packaging>war</packaging>
 
-    <!-- Remove <prerequisites> and replace with enforcer -->
     <build>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-enforcer-plugin</artifactId>
-                <version>3.4.1</version>
-                <executions>
-                    <execution>
-                        <id>enforce-maven</id>
-                        <goals><goal>enforce</goal></goals>
-                        <configuration>
-                            <rules>
-                                <requireMavenVersion>
-                                    <version>[3.6.0,)</version>
-                                </requireMavenVersion>
-                            </rules>
-                        </configuration>
-                    </execution>
-                </executions>
+                <groupId>org.mortbay.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>8.1.16.v20140903</version> <!-- ✓ FIXED VERSION -->
             </plugin>
         </plugins>
     </build>
